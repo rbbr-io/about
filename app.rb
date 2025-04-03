@@ -71,3 +71,7 @@ get '/test-webhook' do
   content_type :json
   result.to_json
 end
+
+get '/services-reference' do
+  erb :services_reference
+end

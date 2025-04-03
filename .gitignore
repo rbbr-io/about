@@ -35,3 +35,4 @@ vendor/bundle
 .vscode/
 *.swp
 *.swo
+.sitedock

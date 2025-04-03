@@ -1,0 +1,26 @@
+subject: Your Guides Are Here!
+body: -|
+  <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <p>Hey friend,</p>
+
+    <p>Thanks for checking us out! We're sending you these two guides that we currently have ready. We'll make sure to share the other ones with you once they're complete:</p>
+
+    <ol>
+      <li style="margin-bottom: 1rem;">
+        <strong><a href="https://rbbr-io.notion.site/Our-Approach-to-Automated-Testing-1c3f298fff4c80949680c57bacd46bbd">Our Approach to Testing</a></strong> – A quick look at how we make testing painless yet effective. We'll walk you through our favorite tools, tips, and strategies to keep everything running smoothly.
+      </li>
+
+      <li style="margin-bottom: 1rem;">
+        <strong>Services to Cut Build Time</strong> – this collection of services can save you weeks of development time for key features like activity tracking, permissions management, data import/export, third-party integrations and much more. We use ready-made solutions to reduce development overhead.
+      </li>
+    </ol>
+
+    <p>Give them a read and let us know what you think. If you have any questions or just want to chat about your latest project, hit "reply" or reach us at [your preferred contact info]. We're here to help!</p>
+
+    <p style="margin-top: 2rem;">
+      Cheers,<br>
+      <strong>Ivan Nemytchenko</strong><br>
+      Founder and CTO<br>
+      RBBR Limited
+    </p>
+  </div>
