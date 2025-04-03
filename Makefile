@@ -1,42 +1,50 @@
-.PHONY: install start docker-build docker-run
+.PHONY: install start docker-build docker-run push
 
-# Установка зависимостей
+# Dependencies installation
 install:
 	bundle install
 
-# Запуск сервера разработки
+# Development server start
 start:
 	bundle exec ruby app.rb
 
-# Быстрый запуск для разработки без установки зависимостей
+# Quick development start without manual dependencies installation
 dev: install start
 
-# Сборка Docker-образа
+# Docker image build
 docker-build:
 	docker build -t rbbr-landing .
 
-# Запуск Docker-контейнера
+# Docker container run
 docker-run:
 	docker run -p 4567:4567 rbbr-landing
 
-# Полный цикл: сборка и запуск в Docker
+# Complete cycle: build and run Docker
 docker: docker-build docker-run
 
-# Проверка работоспособности
+# Server availability check
 check:
-	@echo "Проверка доступности сервера..."
-	@curl -s http://localhost:4567 > /dev/null && echo "Сервер работает!" || echo "Сервер не запущен!"
+	@echo "Checking server availability..."
+	@curl -s http://localhost:4567 > /dev/null && echo "Server is running!" || echo "Server is not running!"
 
-# Помощь
+# Push to Git repository
+push:
+	@echo "Pushing to git repository..."
+	git add .
+	git commit -m "Update landing page" || true
+	git push
+
+# Help
 help:
-	@echo "Доступные команды:"
-	@echo "  make install     - Установка зависимостей"
-	@echo "  make start       - Запуск сервера разработки"
-	@echo "  make dev         - Установка зависимостей и запуск сервера"
-	@echo "  make docker-build - Сборка Docker-образа"
-	@echo "  make docker-run  - Запуск Docker-контейнера"
-	@echo "  make docker      - Сборка и запуск Docker-контейнера"
-	@echo "  make check       - Проверка работоспособности сервера"
+	@echo "Available commands:"
+	@echo "  make install     - Install dependencies"
+	@echo "  make start       - Start development server"
+	@echo "  make dev         - Install dependencies and start server"
+	@echo "  make docker-build - Build Docker image"
+	@echo "  make docker-run  - Run Docker container"
+	@echo "  make docker      - Build and run Docker container"
+	@echo "  make check       - Check server availability"
+	@echo "  make push        - Push changes to repository"
 
-# По умолчанию - показать помощь
+# Default - show help
 default: help

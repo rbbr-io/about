@@ -3,14 +3,14 @@ require 'uri'
 require 'json'
 require 'logger'
 
-# Класс для работы с внешними вебхуками
+# Client for working with external webhooks
 class WebhookClient
   attr_reader :logger
 
-  # Инициализация с настройками
-  # @param webhook_url [String] URL вебхука
-  # @param logger [Logger] объект для логирования (опционально)
-  # @param debug_mode [Boolean] режим отладки (опционально)
+  # Initialize with settings
+  # @param webhook_url [String] Webhook URL
+  # @param logger [Logger] Logger object (optional)
+  # @param debug_mode [Boolean] Debug mode flag (optional)
   def initialize(webhook_url, logger: nil, debug_mode: false)
     @webhook_url = webhook_url
     @logger = logger || Logger.new(STDOUT)
@@ -18,38 +18,38 @@ class WebhookClient
     @connection_options = { open_timeout: 10, read_timeout: 10 }
   end
 
-  # Установка режима отладки
-  # @param value [Boolean] включить/выключить режим отладки
+  # Set debug mode
+  # @param value [Boolean] Enable/disable debug mode
   def debug_mode=(value)
     @debug_mode = !!value
-    logger.info "Режим отладки #{@debug_mode ? 'включен' : 'отключен'}"
+    logger.info "Debug mode #{@debug_mode ? 'enabled' : 'disabled'}"
   end
 
-  # Проверка доступности вебхука
-  # @return [Hash] результат проверки в формате {status: код, message: сообщение, body: тело ответа}
+  # Test webhook availability
+  # @return [Hash] Test result in format {status: code, message: text, body: response_body}
   def test_connection
-    logger.info "Проверка соединения с #{@webhook_url}"
+    logger.info "Testing connection to #{@webhook_url}"
 
     begin
       response = Net::HTTP.get_response(URI(@webhook_url))
-      logger.info "Ответ: #{response.code} #{response.message}"
+      logger.info "Response: #{response.code} #{response.message}"
 
-      { status: response.code.to_i, message: "Тест выполнен: #{response.message}", body: response.body }
+      { status: response.code.to_i, message: "Test completed: #{response.message}", body: response.body }
     rescue => e
-      logger.error "Ошибка соединения: #{e.message}"
+      logger.error "Connection error: #{e.message}"
       { status: 500, error: e.class.name, message: e.message }
     end
   end
 
-  # Отправка данных на вебхук
-  # @param data [Hash] данные для отправки
-  # @return [Hash] результат отправки
+  # Send data to webhook
+  # @param data [Hash] Data to send
+  # @return [Hash] Send result
   def send_data(data)
-    logger.info "Отправка данных: #{data.inspect}"
+    logger.info "Sending data: #{data.inspect}"
 
     if @debug_mode
-      logger.info "ТЕСТОВЫЙ РЕЖИМ: #{@webhook_url}"
-      return { status: 200, message: "Debug: имитация отправки на #{@webhook_url}" }
+      logger.info "DEBUG MODE: #{@webhook_url}"
+      return { status: 200, message: "Debug: simulating send to #{@webhook_url}" }
     end
 
     begin
@@ -64,18 +64,18 @@ class WebhookClient
       request.body = data.to_json
 
       response = http.request(request)
-      logger.info "Ответ: #{response.code} #{response.body.inspect[0..100]}"
+      logger.info "Response: #{response.code} #{response.body.inspect[0..100]}"
 
       { status: response.code.to_i, message: response.body }
     rescue => e
-      logger.error "Ошибка: #{e.message}"
+      logger.error "Error: #{e.message}"
       { status: 500, error: e.class.name, message: e.message }
     end
   end
 
-  # Обработка формы с гайдами
-  # @param params [Hash] параметры из формы
-  # @return [Hash] результат отправки
+  # Process guides form submission
+  # @param params [Hash] Form parameters
+  # @return [Hash] Processing result
   def process_guides_form(params)
     email = params[:email]
     selected_guides = params[:selected_guides] || []
