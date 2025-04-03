@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Тестирование Webhook</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #2350a8;
+    }
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #f8f9fa;
+    }
+    button {
+      background-color: #2350a8;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px 0;
+    }
+    button:hover {
+      background-color: #1a3f80;
+    }
+    pre {
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    label {
+      font-weight: bold;
+    }
+    .checkbox-group {
+      margin: 10px 0;
+    }
+    .checkbox-item {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Тестирование Webhook</h1>
+
+  <div class="card">
+    <h2>1. Проверка соединения с n8n</h2>
+    <p>Выполняет простой GET-запрос к вебхуку для проверки доступности.</p>
+    <button id="test-connection">Проверить соединение</button>
+    <div id="connection-result"></div>
+  </div>
+
+  <div class="card">
+    <h2>2. Тестовая отправка запроса</h2>
+    <form id="test-form">
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="test@example.com">
+      </div>
+
+      <div class="checkbox-group">
+        <h3>Выберите гайды:</h3>
+
+        <div class="checkbox-item">
+          <input type="checkbox" id="guide-1" name="selected_guides[]" value="painless-rails-guide" checked>
+          <label for="guide-1">Painless Rails Guide</label>
+        </div>
+
+        <div class="checkbox-item">
+          <input type="checkbox" id="guide-2" name="selected_guides[]" value="our-approach-to-testing">
+          <label for="guide-2">Our Approach to Testing</label>
+        </div>
+      </div>
+
+      <button type="submit">Отправить тестовый запрос</button>
+    </form>
+    <div id="form-result"></div>
+  </div>
+
+  <div class="card">
+    <h2>3. Режим отладки</h2>
+    <p>В режиме отладки запросы не отправляются на n8n, а только логируются.</p>
+    <button id="toggle-debug">Включить режим отладки</button>
+    <div id="debug-status">Статус: Отладка отключена</div>
+  </div>
+
+  <script>
+    document.getElementById('test-connection').addEventListener('click', function() {
+      const resultDiv = document.getElementById('connection-result');
+      resultDiv.innerHTML = '<p>Выполняется проверка...</p>';
+
+      fetch('/test-webhook')
+        .then(response => response.json())
+        .then(data => {
+          let html = `<h4 class="${data.status === 200 ? 'success' : 'error'}">Статус: ${data.status}</h4>`;
+          html += `<p>Сообщение: ${data.message}</p>`;
+          if (data.body) {
+            html += `<h4>Ответ сервера:</h4><pre>${JSON.stringify(data.body, null, 2)}</pre>`;
+          }
+          resultDiv.innerHTML = html;
+        })
+        .catch(error => {
+          resultDiv.innerHTML = `<h4 class="error">Ошибка: ${error.message}</h4>`;
+        });
+    });
+
+    document.getElementById('test-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const resultDiv = document.getElementById('form-result');
+      resultDiv.innerHTML = '<p>Отправка данных...</p>';
+
+      const formData = new FormData(this);
+      const jsonData = {};
+
+      // Собираем данные формы в объект для JSON
+      for (const [key, value] of formData.entries()) {
+        if (key.endsWith('[]')) {
+          const baseKey = key.substring(0, key.length - 2);
+          if (!jsonData[baseKey]) {
+            jsonData[baseKey] = [];
+          }
+          jsonData[baseKey].push(value);
+        } else {
+          jsonData[key] = value;
+        }
+      }
+
+      fetch('/send-guides', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(jsonData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        let html = `<h4 class="${data.status === 200 ? 'success' : 'error'}">Статус: ${data.status}</h4>`;
+        if (data.error) {
+          html += `<p>Ошибка: ${data.error}</p>`;
+        }
+        html += `<h4>Ответ:</h4><pre>${JSON.stringify(data, null, 2)}</pre>`;
+        resultDiv.innerHTML = html;
+      })
+      .catch(error => {
+        resultDiv.innerHTML = `<h4 class="error">Ошибка: ${error.message}</h4>`;
+      });
+    });
+
+    let debugMode = false;
+
+    document.getElementById('toggle-debug').addEventListener('click', function() {
+      debugMode = !debugMode;
+
+      fetch('/toggle-debug?debug=' + debugMode, {
+        method: 'POST'
+      })
+      .then(response => response.json())
+      .then(data => {
+        const statusDiv = document.getElementById('debug-status');
+        statusDiv.textContent = `Статус: Отладка ${data.debug ? 'включена' : 'отключена'}`;
+
+        const button = document.getElementById('toggle-debug');
+        button.textContent = data.debug ? 'Отключить режим отладки' : 'Включить режим отладки';
+      });
+    });
+  </script>
+</body>
+</html>

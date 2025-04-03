@@ -112,11 +112,10 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.disabled = true;
             submitButton.textContent = 'Sending...';
 
-            // Отправляем данные через fetch API
-            fetch('https://n8n-n8n.7dglae.easypanel.host/webhook-test/680e418d-dcea-41b5-8672-872b7dcd91cc', {
+            // Отправляем данные через Sinatra-прокси
+            fetch('/send-guides', {
                 method: 'POST',
-                body: formData,
-                mode: 'cors' // Важно для cross-origin запросов
+                body: formData
             })
             .then(response => {
                 if (!response.ok) {
@@ -131,16 +130,11 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error:', error);
-                // Здесь запасной вариант - отправка формы стандартным способом
+                // Возвращаем кнопку в исходное состояние
                 submitButton.disabled = false;
                 submitButton.textContent = originalButtonText;
                 selectionHint.textContent = "There was a problem. Please try again.";
                 selectionHint.style.color = "#e53e3e";
-
-                // Если возникла ошибка CORS, можно попробовать стандартную отправку формы
-                if (error.message.includes('CORS')) {
-                    resourceForm.submit();
-                }
             });
         });
     }
