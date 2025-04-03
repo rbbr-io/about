@@ -70,3 +70,37 @@ DEBUG=true
 └── views/                 # ERB templates
     └── index.erb          # Main page template
 ```
+
+## Troubleshooting Deployment
+
+If the service doesn't start in Easypanel and gets stuck in "Waiting for service to start...", try these steps:
+
+1. **Check Logs**
+   - In Easypanel, go to your service and click "Logs"
+   - Look for specific errors in the startup process
+
+2. **Environment Variables**
+   - Make sure all required environment variables are set:
+     - `PORT=4567`
+     - `WEBHOOK_URL=https://your-webhook-url`
+
+3. **Memory & Resources**
+   - Ensure the service has enough memory (at least 512MB)
+   - If using a small VPS, increase swap space
+
+4. **Manual Command Test**
+   - SSH into the server and try running the application manually:
+   ```
+   cd /path/to/deployment
+   bundle exec ruby app.rb -o 0.0.0.0
+   ```
+
+5. **Networking**
+   - Check if port 4567 is accessible
+   - Make sure there are no firewall issues
+
+6. **File Permissions**
+   - Ensure all files have correct permissions
+   - The entrypoint.sh script needs to be executable
+
+If all else fails, try deploying from scratch with a new service.

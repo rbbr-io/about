@@ -1,22 +1,32 @@
 FROM ruby:3.2-slim
 
-# Устанавливаем зависимости для сборки
+# Install build dependencies
 RUN apt-get update && apt-get install -y build-essential
 
-# Создаем директорию приложения
+# Set working directory
 WORKDIR /app
 
-# Копируем файлы зависимостей
+# Copy dependency files
 COPY Gemfile Gemfile.lock* ./
 
-# Устанавливаем зависимости
+# Install dependencies
 RUN bundle install
 
-# Копируем остальные файлы приложения
+# Copy all application files
 COPY . .
 
-# Открываем порт
+# Set permissions for entrypoint
+RUN chmod +x /app/entrypoint.sh
+
+# Set environment variables
+ENV PORT=4567
+ENV RACK_ENV=production
+
+# Show directory listing for debugging
+RUN ls -la
+
+# Expose port
 EXPOSE 4567
 
-# Запускаем приложение
-CMD ["bundle", "exec", "ruby", "app.rb"]
+# Set entrypoint script
+ENTRYPOINT ["/app/entrypoint.sh"]
