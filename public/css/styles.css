@@ -50,10 +50,10 @@ header {
 
 .logo {
     color: var(--heading-color);
-    font-size: 95px;
+    font-size: 85px;
     font-weight: 900;
     margin-bottom: 0;
-    margin-top: 5px;
+    margin-top: 10px;
     opacity: 0;
     transform: translateY(-10px);
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -374,7 +374,8 @@ strong {
     }
 
     .logo {
-
+        font-size: 65px;
+        margin-top: 20px;
     }
     .logo-container {
         width: auto;
@@ -431,30 +432,56 @@ strong {
     margin-bottom: 1.2rem;
 }
 
-/* Добавляем медиа-запрос для очень маленьких экранов */
+/* Изменяем медиа-запрос для диапазона 300-400px */
 @media (max-width: 400px) {
     .header-logo {
         flex-direction: column;
-        gap: 1rem; /* Добавляем отступ между элементами */
+        gap: 1rem;
     }
 
     .logo-image img {
-        height: 70px; /* Уменьшаем высоту картинки */
+        height: 70px;
     }
 
     .logo-image {
-      max-height: 80px; /* Уменьшаем максимальную высоту контейнера картинки */
+      max-height: 80px;
     }
 
     .logo {
-       /* Корректируем clamp для очень маленьких экранов */
-       font-size: clamp(65px, 15vw, 50px);
-       margin-top: 0;
+       font-size: 65px
+       margin-top: 0.5rem;
     }
 
     .logo-container {
-        height: auto; /* Автоматическая высота для контейнера текста */
-        width: 100%; /* Занимаем всю ширину */
-        margin-bottom: 0.5rem; /* Небольшой отступ снизу */
+        height: auto;
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Медиа-запрос для очень маленьких экранов (меньше 300px) */
+@media (max-width: 299px) {
+    .header-logo {
+        gap: 0.5rem; /* Уменьшаем отступ */
+    }
+
+    .logo {
+        font-size: 45px; /* Увеличиваем текст RBBR */
+        margin-top: 0; /* Убираем отступ сверху, т.к. элементы в ряд */
+    }
+
+    .logo-image img {
+        height: 60px; /* Слегка уменьшаем картинку */
+    }
+
+    .logo-image {
+        max-height: 70px;
+    }
+
+    .logo-container {
+      height: auto; /* Автоматическая высота */
+      width: auto; /* Ширина по контенту */
+      justify-content: flex-start; /* Выравнивание по левому краю */
+      margin-bottom: 0;
     }
 }
