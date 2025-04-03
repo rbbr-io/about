@@ -113,6 +113,11 @@ section.visible {
 /* Форма и чекбоксы */
 .resource-form {
     margin-top: 1.5rem;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e8ef;
 }
 
 .checkbox-group {
@@ -413,4 +418,11 @@ strong {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.form-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-bottom: 1.2rem;
 }
