@@ -556,6 +556,13 @@ strong {
     margin: 0;
 }
 
+.thumbs-up {
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    color: #4CAF50;
+}
+
 .service-description {
     flex-grow: 1;
     margin-bottom: 1.5rem;
