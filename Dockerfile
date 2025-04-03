@@ -1,7 +1,10 @@
 FROM ruby:3.3.2-slim
 
 # Install build dependencies
-RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential git curl gnupg2 pkg-config
+
+# Install additional dependencies for appsignal
+RUN apt-get install -y libssl-dev
 
 # Set working directory
 WORKDIR /app
@@ -10,6 +13,7 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock* ./
 
 # Install dependencies
+RUN bundle config set --local build.appsignal "--with-ssl-dir=$(openssl version -d | awk '{print $2}' | tr -d '"')"
 RUN bundle install
 
 # Copy all application files

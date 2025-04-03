@@ -4,7 +4,7 @@ Landing page for RBBR with guides subscription form.
 
 ## Local Development
 
-1. Install Ruby (version 3.0+ recommended)
+1. Install Ruby (version 3.3.2 recommended)
 2. Install dependencies:
    ```
    bundle install
@@ -34,7 +34,6 @@ Landing page for RBBR with guides subscription form.
 4. Add environment variables:
    - `PORT=4567`
    - `WEBHOOK_URL=https://your-n8n-instance.com/webhook-test/your-webhook-id` (real webhook URL)
-   - `DEBUG=false` (for production)
 
 5. Click "Deploy"
 
@@ -45,14 +44,6 @@ Create a `.env` file in the project root (it won't be added to the repository):
 ```
 PORT=4567
 WEBHOOK_URL=https://your-n8n-instance.com/webhook-test/your-webhook-id
-DEBUG=false
-```
-
-For local development, you can use:
-```
-PORT=4567
-WEBHOOK_URL=http://localhost:5678/webhook-test/example
-DEBUG=true
 ```
 
 ## Project Structure

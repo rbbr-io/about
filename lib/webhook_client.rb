@@ -10,19 +10,10 @@ class WebhookClient
   # Initialize with settings
   # @param webhook_url [String] Webhook URL
   # @param logger [Logger] Logger object (optional)
-  # @param debug_mode [Boolean] Debug mode flag (optional)
-  def initialize(webhook_url, logger: nil, debug_mode: false)
+  def initialize(webhook_url, logger: nil)
     @webhook_url = webhook_url
     @logger = logger || Logger.new(STDOUT)
-    @debug_mode = debug_mode
     @connection_options = { open_timeout: 10, read_timeout: 10 }
-  end
-
-  # Set debug mode
-  # @param value [Boolean] Enable/disable debug mode
-  def debug_mode=(value)
-    @debug_mode = !!value
-    logger.info "Debug mode #{@debug_mode ? 'enabled' : 'disabled'}"
   end
 
   # Test webhook availability
@@ -45,12 +36,7 @@ class WebhookClient
   # @param data [Hash] Data to send
   # @return [Hash] Send result
   def send_data(data)
-    logger.info "Sending data: #{data.inspect}"
-
-    if @debug_mode
-      logger.info "DEBUG MODE: #{@webhook_url}"
-      return { status: 200, message: "Debug: simulating send to #{@webhook_url}" }
-    end
+    logger.info "Sending data to #{@webhook_url}: #{data.inspect}"
 
     begin
       uri = URI(@webhook_url)
@@ -59,16 +45,37 @@ class WebhookClient
       http.open_timeout = @connection_options[:open_timeout]
       http.read_timeout = @connection_options[:read_timeout]
 
+      # Log request details
+      logger.info "Preparing request to: #{uri}"
+      logger.info "SSL enabled: #{http.use_ssl?}"
+
       request = Net::HTTP::Post.new(uri)
       request["Content-Type"] = "application/json"
+      request["User-Agent"] = "RBBR WebhookClient/1.0"
       request.body = data.to_json
 
+      logger.info "Sending request... (waiting for response)"
       response = http.request(request)
-      logger.info "Response: #{response.code} #{response.body.inspect[0..100]}"
+
+      # Detailed response logging
+      logger.info "Response received. Status: #{response.code}"
+      logger.info "Response headers: #{response.to_hash.inspect}"
+      logger.info "Response body: #{response.body.inspect[0..200]}..."
+
+      # Specific handling for different status codes
+      case response.code.to_i
+      when 200..299
+        logger.info "Success (2xx): Webhook delivered successfully"
+      when 400..499
+        logger.warn "Error (4xx): Client error when delivering webhook. Check URL and data format."
+      when 500..599
+        logger.error "Error (5xx): Server error when delivering webhook. The receiving service may be down."
+      end
 
       { status: response.code.to_i, message: response.body }
     rescue => e
-      logger.error "Error: #{e.message}"
+      logger.error "Error sending webhook: #{e.class.name} - #{e.message}"
+      logger.error e.backtrace.join("\n")
       { status: 500, error: e.class.name, message: e.message }
     end
   end
