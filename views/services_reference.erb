@@ -1,281 +1,252 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RBBR - Services Reference</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <div class="header-logo">
-                <div class="logo-image">
-                    <img src="/images/logo.png" alt="RBBR" />
-                </div>
-                <div class="logo-container">
-                    <h1 class="logo">RBBR</h1>
-                </div>
-            </div>
-            <div class="back-link">
-                <a href="/">← Back to Home</a>
-            </div>
-        </header>
+<% @page_title = "Services Reference" %>
 
-        <section class="main-section">
-            <div class="col full-width">
-                <h2 class="heading">A Reference of Services to Cut Your Build Time</h2>
+<section class="main-section">
+    <div class="col full-width">
+        <h2 class="heading">A Reference of Services to Cut Your Build Time</h2>
 
-                <p>Below is a <strong>reference table</strong> of third-party services and open-source tools that can <strong>save development time and costs</strong> by handling routine tasks (integrations, data imports, admin dashboards, etc.) out of the box. We haven't tested all of them extensively, but we keep this list on hand for quick lookup. Hopefully, it helps you, too—just remember to check that pricing and features match your actual needs.</p>
-            </div>
-        </section>
-
-        <section class="services-section">
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/api2cart.png" alt="API2Cart" class="service-logo">
-                        <h3 class="service-name">API2Cart</h3>
-                    </div>
-                    <p class="service-description">A single API for integrating with 45+ shopping cart platforms (Magento, WooCommerce, Shopify, etc.). Manage products, orders, and customers across multiple systems.</p>
-                    <div class="service-tags">
-                        <span class="tag">E-commerce aggregator</span>
-                    </div>
-                    <p class="service-price">From ~$500–$1,200/month (depending on call volume). Overages may apply.</p>
-                    <a href="https://api2cart.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/apideck.png" alt="Apideck" class="service-logo">
-                        <h3 class="service-name">Apideck <span class="thumbs-up">👍</span></h3>
-                    </div>
-                    <p class="service-description">A one-stop API covering multiple categories (CRM, HR, accounting, file storage, etc.). Reduces the need to build separate integrations for each service.</p>
-                    <div class="service-tags">
-                        <span class="tag">Unified SaaS API</span>
-                    </div>
-                    <p class="service-price">Free (limited). Growth from ~$249/month. Scale from ~$499/month.</p>
-                    <a href="https://apideck.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/codat.png" alt="Codat" class="service-logo">
-                        <h3 class="service-name">Codat</h3>
-                    </div>
-                    <p class="service-description">Collects data from accounting systems (QuickBooks, Xero) and other sources into a single API, helping small businesses gain insights and streamline financial tasks.</p>
-                    <div class="service-tags">
-                        <span class="tag">Fintech</span>
-                        <span class="tag">SMB</span>
-                    </div>
-                    <p class="service-price">Free developer tier. Paid plans typically start at ~$400–$600/month. Can exceed $1,000/month with higher usage.</p>
-                    <a href="https://www.codat.io/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/csvbox.png" alt="CSVBox" class="service-logo">
-                        <h3 class="service-name">CSVBox <span class="thumbs-up">👍</span></h3>
-                    </div>
-                    <p class="service-description">Widget plus backend for parsing, validating, and mapping CSV files, reducing time spent on custom import code.</p>
-                    <div class="service-tags">
-                        <span class="tag">CSV import</span>
-                    </div>
-                    <p class="service-price">Plans often start around ~$99/month. Usage-based or tiered pricing may apply.</p>
-                    <a href="https://csvbox.io/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/easypost.png" alt="EasyPost" class="service-logo">
-                        <h3 class="service-name">EasyPost</h3>
-                    </div>
-                    <p class="service-description">Unified shipping API for label creation and tracking (USPS, UPS, FedEx, DHL, etc.). Avoid dealing with each carrier separately.</p>
-                    <div class="service-tags">
-                        <span class="tag">Logistics</span>
-                        <span class="tag">Shipping</span>
-                    </div>
-                    <p class="service-price">Free for ~120k shipments/year (US only). Beyond that, ~$0.01–$0.03 per label.</p>
-                    <a href="https://easypost.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/finch.png" alt="Finch" class="service-logo">
-                        <h3 class="service-name">Finch</h3>
-                    </div>
-                    <p class="service-description">Universal employment API that connects with 200+ HR/payroll systems (BambooHR, ADP, etc.). Standardizes employee, payroll, and benefits data.</p>
-                    <div class="service-tags">
-                        <span class="tag">HR & payroll</span>
-                    </div>
-                    <p class="service-price">Sandbox is free. Paid tiers start a few hundred USD/month, often usage-based.</p>
-                    <a href="https://tryfinch.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/imgproxy.png" alt="Imgproxy" class="service-logo">
-                        <h3 class="service-name">Imgproxy <span class="thumbs-up">👍</span></h3>
-                    </div>
-                    <p class="service-description">On-the-fly image transformations (resize, crop, optimize). Available as open source or as a hosted "imgproxy Cloud," removing the need to maintain a custom image-processing environment.</p>
-                    <div class="service-tags">
-                        <span class="tag">Image processing</span>
-                    </div>
-                    <p class="service-price">Open source is free to self-host. Cloud starts at ~$9/month (depends on request volume).</p>
-                    <a href="https://imgproxy.net/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/merge.png" alt="Merge" class="service-logo">
-                        <h3 class="service-name">Merge</h3>
-                    </div>
-                    <p class="service-description">Focused on HR and accounting systems (BambooHR, QuickBooks, Workday, etc.). A single API covers multiple back-end providers.</p>
-                    <div class="service-tags">
-                        <span class="tag">Unified SaaS API</span>
-                    </div>
-                    <p class="service-price">Developer sandbox is free. Starter plans typically start at ~$200–$300/month.</p>
-                    <a href="https://merge.dev/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/nango.png" alt="Nango" class="service-logo">
-                        <h3 class="service-name">Nango</h3>
-                    </div>
-                    <p class="service-description">Self-hosted or cloud platform that unifies connections to various SaaS apps, simplifying authentication and data sync.</p>
-                    <div class="service-tags">
-                        <span class="tag">Open-source integrations</span>
-                    </div>
-                    <p class="service-price">Free if you self-host. Cloud plans from ~$49–$99/month.</p>
-                    <a href="https://nango.dev/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/nylas.png" alt="Nylas" class="service-logo">
-                        <h3 class="service-name">Nylas</h3>
-                    </div>
-                    <p class="service-description">Single API for multiple email/calendar providers (Gmail, Outlook, Exchange, etc.), hiding different auth flows and sync logic.</p>
-                    <div class="service-tags">
-                        <span class="tag">Email</span>
-                        <span class="tag">Calendar</span>
-                        <span class="tag">Contacts</span>
-                    </div>
-                    <p class="service-price">30-day free dev trial. From ~$99–$150/month for Essentials. Pricing scales with usage.</p>
-                    <a href="https://nylas.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/plaid.png" alt="Plaid" class="service-logo">
-                        <h3 class="service-name">Plaid</h3>
-                    </div>
-                    <p class="service-description">Unified banking API connecting thousands of financial institutions, offering standardized access to account and transaction data.</p>
-                    <div class="service-tags">
-                        <span class="tag">Fintech</span>
-                        <span class="tag">Banking</span>
-                    </div>
-                    <p class="service-price">Sandbox free. Production often ~$0.30–$1.50 per "Item" per month, with a ~$500–$1,000 monthly minimum.</p>
-                    <a href="https://plaid.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/redox.png" alt="Redox" class="service-logo">
-                        <h3 class="service-name">Redox</h3>
-                    </div>
-                    <p class="service-description">A single interface to multiple EHR systems (Epic, Cerner, etc.), enabling interoperability and simplifying data exchange for health applications.</p>
-                    <div class="service-tags">
-                        <span class="tag">Healthcare</span>
-                        <span class="tag">EHR</span>
-                    </div>
-                    <p class="service-price">No public pricing. Typically large-scale solutions based on patient volume and project complexity.</p>
-                    <a href="https://redoxengine.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/rutter.png" alt="Rutter" class="service-logo">
-                        <h3 class="service-name">Rutter</h3>
-                    </div>
-                    <p class="service-description">Aggregates data from online stores (Shopify, WooCommerce, etc.) and financial tools into one API, streamlining order, product, and accounting management.</p>
-                    <div class="service-tags">
-                        <span class="tag">E-commerce</span>
-                        <span class="tag">Finance</span>
-                    </div>
-                    <p class="service-price">Free limited tier. Paid plans around ~$300–$500/month. May be usage- or store-based.</p>
-                    <a href="https://rutter.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/smartcar.png" alt="Smartcar" class="service-logo">
-                        <h3 class="service-name">Smartcar</h3>
-                    </div>
-                    <p class="service-description">Standardizes vehicle telematics and remote-control APIs (location, lock/unlock, fuel/battery status) across different car brands.</p>
-                    <div class="service-tags">
-                        <span class="tag">Automotive</span>
-                        <span class="tag">Connected cars</span>
-                    </div>
-                    <p class="service-price">Free dev sandbox (limited). After that, ~$0.05–$0.10 per successful call.</p>
-                    <a href="https://smartcar.com/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/terra.png" alt="Terra" class="service-logo">
-                        <h3 class="service-name">Terra</h3>
-                    </div>
-                    <p class="service-description">"Plaid for wearables," providing a single API for Garmin, Fitbit, Apple Health, and more (steps, sleep, heart rate, etc.).</p>
-                    <div class="service-tags">
-                        <span class="tag">Fitness</span>
-                        <span class="tag">Health data</span>
-                    </div>
-                    <p class="service-price">Free tier for small volumes. Paid from ~$100–$500/month, depending on data usage/users.</p>
-                    <a href="https://tryterra.co/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/unified.png" alt="Unified.to" class="service-logo">
-                        <h3 class="service-name">Unified.to</h3>
-                    </div>
-                    <p class="service-description">Brings dozens of SaaS services (CRM, billing, messaging, etc.) under one real-time API, simplifying integrations and data sync.</p>
-                    <div class="service-tags">
-                        <span class="tag">Multi-category aggregator</span>
-                    </div>
-                    <p class="service-price">May have a free dev tier. Paid plans typically a few hundred USD/month, often usage-based.</p>
-                    <a href="https://unified.to/" class="service-link" target="_blank">Visit Website</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-header">
-                        <img src="/images/services/administrate.png" alt="Administrate" class="service-logo">
-                        <h3 class="service-name">Administrate <span class="thumbs-up">👍</span></h3>
-                    </div>
-                    <p class="service-description">Open-source gem for generating an internal admin dashboard (CRUD) in Ruby on Rails projects. Saves time vs. building a custom admin from scratch.</p>
-                    <div class="service-tags">
-                        <span class="tag">Admin panel</span>
-                        <span class="tag">Rails gem</span>
-                    </div>
-                    <p class="service-price">Free (MIT License). Self-hosted in your Rails app.</p>
-                    <a href="https://github.com/thoughtbot/administrate" class="service-link" target="_blank">Visit GitHub</a>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-section">
-            <div class="col">
-                <h3 class="sub-heading">Know a Useful Service?</h3>
-                <p>If you know of a service that's worth adding to our list, or would like to learn more about our experience using these tools, drop us a line at <a href="mailto:contact@rbbr.io">contact@rbbr.io</a></p>
-                <p><em>Note: All pricing is approximate and subject to change. Always check the official sites or contact support for accurate details.</em></p>
-            </div>
-        </section>
+        <p>Below is a <strong>reference table</strong> of third-party services and open-source tools that can <strong>save development time and costs</strong> by handling routine tasks (integrations, data imports, admin dashboards, etc.) out of the box. We haven't tested all of them extensively, but we keep this list on hand for quick lookup. Hopefully, it helps you, too—just remember to check that pricing and features match your actual needs.</p>
     </div>
-    <script src="/js/main.js"></script>
-</body>
-</html>
+</section>
+
+<section class="services-section">
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/api2cart.png" alt="API2Cart" class="service-logo">
+                <h3 class="service-name">API2Cart</h3>
+            </div>
+            <p class="service-description">A single API for integrating with 45+ shopping cart platforms (Magento, WooCommerce, Shopify, etc.). Manage products, orders, and customers across multiple systems.</p>
+            <div class="service-tags">
+                <span class="tag">E-commerce aggregator</span>
+            </div>
+            <p class="service-price">From ~$500–$1,200/month (depending on call volume). Overages may apply.</p>
+            <a href="https://api2cart.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/apideck.png" alt="Apideck" class="service-logo">
+                <h3 class="service-name">Apideck <span class="thumbs-up">👍</span></h3>
+            </div>
+            <p class="service-description">A one-stop API covering multiple categories (CRM, HR, accounting, file storage, etc.). Reduces the need to build separate integrations for each service.</p>
+            <div class="service-tags">
+                <span class="tag">Unified SaaS API</span>
+            </div>
+            <p class="service-price">Free (limited). Growth from ~$249/month. Scale from ~$499/month.</p>
+            <a href="https://apideck.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/codat.png" alt="Codat" class="service-logo">
+                <h3 class="service-name">Codat</h3>
+            </div>
+            <p class="service-description">Collects data from accounting systems (QuickBooks, Xero) and other sources into a single API, helping small businesses gain insights and streamline financial tasks.</p>
+            <div class="service-tags">
+                <span class="tag">Fintech</span>
+                <span class="tag">SMB</span>
+            </div>
+            <p class="service-price">Free developer tier. Paid plans typically start at ~$400–$600/month. Can exceed $1,000/month with higher usage.</p>
+            <a href="https://www.codat.io/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/csvbox.png" alt="CSVBox" class="service-logo">
+                <h3 class="service-name">CSVBox <span class="thumbs-up">👍</span></h3>
+            </div>
+            <p class="service-description">Widget plus backend for parsing, validating, and mapping CSV files, reducing time spent on custom import code.</p>
+            <div class="service-tags">
+                <span class="tag">CSV import</span>
+            </div>
+            <p class="service-price">Plans often start around ~$99/month. Usage-based or tiered pricing may apply.</p>
+            <a href="https://csvbox.io/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/easypost.png" alt="EasyPost" class="service-logo">
+                <h3 class="service-name">EasyPost</h3>
+            </div>
+            <p class="service-description">Unified shipping API for label creation and tracking (USPS, UPS, FedEx, DHL, etc.). Avoid dealing with each carrier separately.</p>
+            <div class="service-tags">
+                <span class="tag">Logistics</span>
+                <span class="tag">Shipping</span>
+            </div>
+            <p class="service-price">Free for ~120k shipments/year (US only). Beyond that, ~$0.01–$0.03 per label.</p>
+            <a href="https://easypost.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/finch.png" alt="Finch" class="service-logo">
+                <h3 class="service-name">Finch</h3>
+            </div>
+            <p class="service-description">Universal employment API that connects with 200+ HR/payroll systems (BambooHR, ADP, etc.). Standardizes employee, payroll, and benefits data.</p>
+            <div class="service-tags">
+                <span class="tag">HR & payroll</span>
+            </div>
+            <p class="service-price">Sandbox is free. Paid tiers start a few hundred USD/month, often usage-based.</p>
+            <a href="https://tryfinch.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/imgproxy.png" alt="Imgproxy" class="service-logo">
+                <h3 class="service-name">Imgproxy <span class="thumbs-up">👍</span></h3>
+            </div>
+            <p class="service-description">On-the-fly image transformations (resize, crop, optimize). Available as open source or as a hosted "imgproxy Cloud," removing the need to maintain a custom image-processing environment.</p>
+            <div class="service-tags">
+                <span class="tag">Image processing</span>
+            </div>
+            <p class="service-price">Open source is free to self-host. Cloud starts at ~$9/month (depends on request volume).</p>
+            <a href="https://imgproxy.net/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/merge.png" alt="Merge" class="service-logo">
+                <h3 class="service-name">Merge</h3>
+            </div>
+            <p class="service-description">Focused on HR and accounting systems (BambooHR, QuickBooks, Workday, etc.). A single API covers multiple back-end providers.</p>
+            <div class="service-tags">
+                <span class="tag">Unified SaaS API</span>
+            </div>
+            <p class="service-price">Developer sandbox is free. Starter plans typically start at ~$200–$300/month.</p>
+            <a href="https://merge.dev/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/nango.png" alt="Nango" class="service-logo">
+                <h3 class="service-name">Nango</h3>
+            </div>
+            <p class="service-description">Self-hosted or cloud platform that unifies connections to various SaaS apps, simplifying authentication and data sync.</p>
+            <div class="service-tags">
+                <span class="tag">Open-source integrations</span>
+            </div>
+            <p class="service-price">Free if you self-host. Cloud plans from ~$49–$99/month.</p>
+            <a href="https://nango.dev/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/nylas.png" alt="Nylas" class="service-logo">
+                <h3 class="service-name">Nylas</h3>
+            </div>
+            <p class="service-description">Single API for multiple email/calendar providers (Gmail, Outlook, Exchange, etc.), hiding different auth flows and sync logic.</p>
+            <div class="service-tags">
+                <span class="tag">Email</span>
+                <span class="tag">Calendar</span>
+                <span class="tag">Contacts</span>
+            </div>
+            <p class="service-price">30-day free dev trial. From ~$99–$150/month for Essentials. Pricing scales with usage.</p>
+            <a href="https://nylas.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/plaid.png" alt="Plaid" class="service-logo">
+                <h3 class="service-name">Plaid</h3>
+            </div>
+            <p class="service-description">Unified banking API connecting thousands of financial institutions, offering standardized access to account and transaction data.</p>
+            <div class="service-tags">
+                <span class="tag">Fintech</span>
+                <span class="tag">Banking</span>
+            </div>
+            <p class="service-price">Sandbox free. Production often ~$0.30–$1.50 per "Item" per month, with a ~$500–$1,000 monthly minimum.</p>
+            <a href="https://plaid.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/redox.png" alt="Redox" class="service-logo">
+                <h3 class="service-name">Redox</h3>
+            </div>
+            <p class="service-description">A single interface to multiple EHR systems (Epic, Cerner, etc.), enabling interoperability and simplifying data exchange for health applications.</p>
+            <div class="service-tags">
+                <span class="tag">Healthcare</span>
+                <span class="tag">EHR</span>
+            </div>
+            <p class="service-price">No public pricing. Typically large-scale solutions based on patient volume and project complexity.</p>
+            <a href="https://redoxengine.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/rutter.png" alt="Rutter" class="service-logo">
+                <h3 class="service-name">Rutter</h3>
+            </div>
+            <p class="service-description">Aggregates data from online stores (Shopify, WooCommerce, etc.) and financial tools into one API, streamlining order, product, and accounting management.</p>
+            <div class="service-tags">
+                <span class="tag">E-commerce</span>
+                <span class="tag">Finance</span>
+            </div>
+            <p class="service-price">Free limited tier. Paid plans around ~$300–$500/month. May be usage- or store-based.</p>
+            <a href="https://rutter.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/smartcar.png" alt="Smartcar" class="service-logo">
+                <h3 class="service-name">Smartcar</h3>
+            </div>
+            <p class="service-description">Standardizes vehicle telematics and remote-control APIs (location, lock/unlock, fuel/battery status) across different car brands.</p>
+            <div class="service-tags">
+                <span class="tag">Automotive</span>
+                <span class="tag">Connected cars</span>
+            </div>
+            <p class="service-price">Free dev sandbox (limited). After that, ~$0.05–$0.10 per successful call.</p>
+            <a href="https://smartcar.com/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/terra.png" alt="Terra" class="service-logo">
+                <h3 class="service-name">Terra</h3>
+            </div>
+            <p class="service-description">"Plaid for wearables," providing a single API for Garmin, Fitbit, Apple Health, and more (steps, sleep, heart rate, etc.).</p>
+            <div class="service-tags">
+                <span class="tag">Fitness</span>
+                <span class="tag">Health data</span>
+            </div>
+            <p class="service-price">Free tier for small volumes. Paid from ~$100–$500/month, depending on data usage/users.</p>
+            <a href="https://tryterra.co/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/unified.png" alt="Unified.to" class="service-logo">
+                <h3 class="service-name">Unified.to</h3>
+            </div>
+            <p class="service-description">Brings dozens of SaaS services (CRM, billing, messaging, etc.) under one real-time API, simplifying integrations and data sync.</p>
+            <div class="service-tags">
+                <span class="tag">Multi-category aggregator</span>
+            </div>
+            <p class="service-price">May have a free dev tier. Paid plans typically a few hundred USD/month, often usage-based.</p>
+            <a href="https://unified.to/" class="service-link" target="_blank">Visit Website</a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-header">
+                <img src="/images/services/administrate.png" alt="Administrate" class="service-logo">
+                <h3 class="service-name">Administrate <span class="thumbs-up">👍</span></h3>
+            </div>
+            <p class="service-description">Open-source gem for generating an internal admin dashboard (CRUD) in Ruby on Rails projects. Saves time vs. building a custom admin from scratch.</p>
+            <div class="service-tags">
+                <span class="tag">Admin panel</span>
+                <span class="tag">Rails gem</span>
+            </div>
+            <p class="service-price">Free (MIT License). Self-hosted in your Rails app.</p>
+            <a href="https://github.com/thoughtbot/administrate" class="service-link" target="_blank">Visit GitHub</a>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section">
+    <div class="col">
+        <h3 class="sub-heading">Know a Useful Service?</h3>
+        <p>If you know of a service that's worth adding to our list, or would like to learn more about our experience using these tools, drop us a line at <a href="mailto:contact@rbbr.io">contact@rbbr.io</a></p>
+        <p><em>Note: All pricing is approximate and subject to change. Always check the official sites or contact support for accurate details.</em></p>
+    </div>
+</section>

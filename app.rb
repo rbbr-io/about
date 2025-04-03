@@ -24,7 +24,7 @@ WEBHOOK_URL = ENV['WEBHOOK_URL']
 
 # Main page
 get '/' do
-  erb :index
+  erb :index, :layout => :home_layout
 end
 
 # Test form route
