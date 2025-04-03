@@ -1,4 +1,4 @@
-.PHONY: install start docker-build docker-run push
+.PHONY: install start docker-build docker-run push logos
 
 # Dependencies installation
 install:
@@ -34,6 +34,11 @@ push:
 	git commit -m "Update landing page" || true
 	git push
 
+# Download service logos
+logos:
+	@echo "Downloading high-quality logos from service URLs..."
+	bundle exec rake services:process_logos
+
 # Help
 help:
 	@echo "Available commands:"
@@ -45,6 +50,7 @@ help:
 	@echo "  make docker      - Build and run Docker container"
 	@echo "  make check       - Check server availability"
 	@echo "  make push        - Push changes to repository"
+	@echo "  make logos       - Download high-quality logos for service cards"
 
 # Default - show help
 default: help

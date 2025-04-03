@@ -562,6 +562,13 @@ strong {
     color: var(--text-color);
 }
 
+.service-price {
+    font-size: 0.9rem;
+    color: #667085;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
 .service-tags {
     display: flex;
     flex-wrap: wrap;
