@@ -1,4 +1,4 @@
-.PHONY: install start docker-build docker-run push logos
+.PHONY: install start docker-build docker-run push logos deploy
 
 # Dependencies installation
 install:
@@ -39,6 +39,19 @@ logos:
 	@echo "Downloading high-quality logos from service URLs..."
 	bundle exec rake services:process_logos
 
+# Deploy to production using webhook from .sitedock file
+deploy:
+	@echo "Deploying to production..."
+	@webhook=$$(grep -A 1 deploy_hook .sitedock | tail -1 | tr -d ' '); \
+	if [ -n "$$webhook" ]; then \
+		echo "Triggering deploy webhook..."; \
+		curl -s "$$webhook"; \
+		echo "\nDeploy triggered successfully!"; \
+	else \
+		echo "Error: Could not find deploy webhook URL in .sitedock file"; \
+		exit 1; \
+	fi
+
 # Help
 help:
 	@echo "Available commands:"
@@ -51,6 +64,7 @@ help:
 	@echo "  make check       - Check server availability"
 	@echo "  make push        - Push changes to repository"
 	@echo "  make logos       - Download high-quality logos for service cards"
+	@echo "  make deploy      - Deploy to production using webhook"
 
 # Default - show help
 default: help
