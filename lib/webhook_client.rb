@@ -7,29 +7,10 @@ require 'logger'
 class WebhookClient
   attr_reader :logger
 
-  # Initialize with settings
-  # @param webhook_url [String] Webhook URL
-  # @param logger [Logger] Logger object (optional)
   def initialize(webhook_url, logger: nil)
     @webhook_url = webhook_url
     @logger = logger || Logger.new(STDOUT)
     @connection_options = { open_timeout: 10, read_timeout: 10 }
-  end
-
-  # Test webhook availability
-  # @return [Hash] Test result in format {status: code, message: text, body: response_body}
-  def test_connection
-    logger.info "Testing connection to #{@webhook_url}"
-
-    begin
-      response = Net::HTTP.get_response(URI(@webhook_url))
-      logger.info "Response: #{response.code} #{response.message}"
-
-      { status: response.code.to_i, message: "Test completed: #{response.message}", body: response.body }
-    rescue => e
-      logger.error "Connection error: #{e.message}"
-      { status: 500, error: e.class.name, message: e.message }
-    end
   end
 
   # Send data to webhook
@@ -78,20 +59,5 @@ class WebhookClient
       logger.error e.backtrace.join("\n")
       { status: 500, error: e.class.name, message: e.message }
     end
-  end
-
-  # Process guides form submission
-  # @param params [Hash] Form parameters
-  # @return [Hash] Processing result
-  def process_guides_form(params)
-    email = params[:email]
-    selected_guides = params[:selected_guides] || []
-
-    return { status: 400, error: "ValidationError", message: "Email is required" } if email.to_s.empty?
-
-    send_data({
-      email: email,
-      selected_guides: selected_guides
-    })
   end
 end

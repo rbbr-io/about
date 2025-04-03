@@ -1,5 +1,6 @@
 subject: Your Guides Are Here!
-body: -|
+from: contact@rbbr.io
+body: |
   <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
     <p>Hey friend,</p>
 
@@ -11,11 +12,11 @@ body: -|
       </li>
 
       <li style="margin-bottom: 1rem;">
-        <strong>Services to Cut Build Time</strong> – this collection of services can save you weeks of development time for key features like activity tracking, permissions management, data import/export, third-party integrations and much more. We use ready-made solutions to reduce development overhead.
+        <strong><a href="https://rbbr.io/services-reference">Services to Cut Build Time</a></strong> – this collection of services can save you weeks of development time for key features like activity tracking, permissions management, data import/export, third-party integrations and much more. We use ready-made solutions to reduce development overhead.
       </li>
     </ol>
 
-    <p>Give them a read and let us know what you think. If you have any questions or just want to chat about your latest project, hit "reply" or reach us at [your preferred contact info]. We're here to help!</p>
+    <p>Give them a read and let us know what you think. If you have any questions or just want to chat about your latest project, hit "reply" or reach us at contact@rbbr.io. We're here to help!</p>
 
     <p style="margin-top: 2rem;">
       Cheers,<br>

@@ -1,4 +1,4 @@
-.PHONY: install start docker-build docker-run push logos deploy
+.PHONY: install start docker-build docker-run push logos deploy send-template
 
 # Dependencies installation
 install:
@@ -52,6 +52,17 @@ deploy:
 		exit 1; \
 	fi
 
+# Send email template as JSON via webhook
+send-template:
+	@echo "Sending email guides template via webhook..."
+	@if curl -s localhost:4567 > /dev/null; then \
+		echo "Server is running, using HTTP endpoint..."; \
+		curl -s "http://localhost:4567/send-yaml-via-webhook"; \
+	else \
+		echo "Server is not running, using direct method..."; \
+		bundle exec ruby app.rb send-yaml; \
+	fi
+
 # Help
 help:
 	@echo "Available commands:"
@@ -65,6 +76,7 @@ help:
 	@echo "  make push        - Push changes to repository"
 	@echo "  make logos       - Download high-quality logos for service cards"
 	@echo "  make deploy      - Deploy to production using webhook"
+	@echo "  make send-template - Send email guides YAML template via webhook"
 
 # Default - show help
 default: help
