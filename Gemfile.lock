@@ -5,6 +5,7 @@ GEM
       logger
       rack (>= 2.0.0)
     base64 (0.2.0)
+    dotenv (3.1.7)
     json (2.10.2)
     logger (1.7.0)
     mustermann (3.0.3)
@@ -38,6 +39,7 @@ PLATFORMS
 
 DEPENDENCIES
   appsignal (~> 4.5, >= 4.5.7)
+  dotenv
   json
   puma
   rackup
