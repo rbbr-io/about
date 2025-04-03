@@ -1,46 +1,46 @@
 # RBBR Landing Page
 
-Лендинг страница для RBBR с формой подписки на гайды.
+Landing page for RBBR with guides subscription form.
 
-## Локальный запуск
+## Local Development
 
-1. Установите Ruby (рекомендуется версия 3.0+)
-2. Установите зависимости:
+1. Install Ruby (version 3.0+ recommended)
+2. Install dependencies:
    ```
    bundle install
    ```
-3. Запустите приложение:
+3. Run the application:
    ```
    bundle exec ruby app.rb
    ```
-   или используя make:
+   or using make:
    ```
    make dev
    ```
-4. Откройте http://localhost:4567 в браузере
+4. Open http://localhost:4567 in your browser
 
-## Деплой в Easypanel
+## Deployment to Easypanel
 
-1. В Easypanel создайте новый сервис
-2. Выберите опцию "Custom" или "Docker"
-3. Настройте параметры:
-   - Name: `rbbr-landing` (или любое другое)
-   - Image: оставьте пустым, если используете GIT-репозиторий
-   - Source: URL вашего Git-репозитория
-   - Branch: `main` (или другая используемая)
+1. Create a new service in Easypanel
+2. Select "Custom" or "Docker" option
+3. Configure parameters:
+   - Name: `rbbr-landing` (or any other)
+   - Image: leave empty if using a GIT repository
+   - Source: URL of your Git repository
+   - Branch: `main` (or other branch you use)
    - Port: `4567`
-   - Domains: настройте нужный домен
+   - Domains: configure your domain
 
-4. Добавьте переменные окружения:
+4. Add environment variables:
    - `PORT=4567`
-   - `WEBHOOK_URL=https://your-n8n-instance.com/webhook-test/your-webhook-id` (реальный URL вебхука)
-   - `DEBUG=false` (для продакшена)
+   - `WEBHOOK_URL=https://your-n8n-instance.com/webhook-test/your-webhook-id` (real webhook URL)
+   - `DEBUG=false` (for production)
 
-5. Нажмите "Deploy"
+5. Click "Deploy"
 
-## Настройка переменных окружения
+## Environment Variables Setup
 
-Создайте файл `.env` в корне проекта (он не будет добавлен в репозиторий):
+Create a `.env` file in the project root (it won't be added to the repository):
 
 ```
 PORT=4567
@@ -48,25 +48,25 @@ WEBHOOK_URL=https://your-n8n-instance.com/webhook-test/your-webhook-id
 DEBUG=false
 ```
 
-Для локальной разработки можно использовать:
+For local development, you can use:
 ```
 PORT=4567
 WEBHOOK_URL=http://localhost:5678/webhook-test/example
 DEBUG=true
 ```
 
-## Структура проекта
+## Project Structure
 
 ```
 /
-├── app.rb                 # Основной файл Sinatra-приложения
-├── Gemfile                # Зависимости Ruby
-├── Makefile               # Команды для разработки
-├── Dockerfile             # Инструкции для сборки контейнера
-├── public/                # Статические файлы
-│   ├── css/               # CSS-стили
-│   ├── js/                # JavaScript-файлы
-│   └── images/            # Изображения
-└── views/                 # Шаблоны ERB
-    └── index.erb          # Шаблон главной страницы
+├── app.rb                 # Main Sinatra application file
+├── Gemfile                # Ruby dependencies
+├── Makefile               # Development commands
+├── Dockerfile             # Docker build instructions
+├── public/                # Static files
+│   ├── css/               # CSS styles
+│   ├── js/                # JavaScript files
+│   └── images/            # Images
+└── views/                 # ERB templates
+    └── index.erb          # Main page template
 ```
